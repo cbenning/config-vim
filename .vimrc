@@ -6,12 +6,14 @@ endif
 set runtimepath+=~/.vim/dein.vim
 
 call dein#begin(expand('~/.cache/dein'))
-call dein#add('Shougo/neocomplete.vim')
 call dein#add('juanedi/predawn.vim')
 call dein#add('tomasr/molokai')
 call dein#add('ervandew/supertab')
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('scrooloose/nerdtree')
+call dein#add('jlanzarotta/bufexplorer')
+"call dein#add('vim-scripts/buftabs')
+call dein#add('ap/vim-buftabline')
 call dein#end()
 
 if dein#check_install()
@@ -23,6 +25,10 @@ filetype plugin indent on
 " Color scheme:
 colorscheme predawn
 "colorscheme molokai
+
+" BufTabs
+noremap <C-h> :bprev<CR>
+noremap <C-l> :bnext<CR>
 
 " Line numbers
 set number
@@ -69,12 +75,6 @@ set undofile
 " set a directory to store the undo history
 set undodir=/home/chris/.vimundo/
 
-" Panel resizing
-"noremap <C-Left> <C-W>-<C-W>-
-"noremap <C-Right> <C-W>+<C-W>+
-"noremap <C-Down> <C-W><<C-W><
-"noremap <C-Up> <C-W>><C-W>>
-
 "Colors
 set t_Co=256
 
@@ -118,100 +118,15 @@ set expandtab
 set mouse=a
 set ttymouse=xterm2
 
-" Disable expandtab for makefiles
-"autocmd FileType make setlocal noexpandtab
-
 "I prefer the new Tagbar plugin
 "let g:tagbar_sort = 0 " Disable alphabetical sort
 "map <F4> :TagbarToggle<CR>
 
-"Rainbow Parenthesis
-"au VimEnter * RainbowParenthesesToggle
-"au Syntax * RainbowParenthesesLoadRound
-"au Syntax * RainbowParenthesesLoadSquare
-"au Syntax * RainbowParenthesesLoadBraces
-"au Syntax * RainbowParenthesesLoadChevrons
-"
-
-
 " NERDTree browser
 map <F3> :NERDTreeToggle<CR>
-
-" Minibuf Explorer
-"map <F5> :MiniBufExplorer<CR>
-"let g:miniBufExplMapWindowNavVim = 1
-"let g:miniBufExplMapWindowNavArrows = 1
-"let g:miniBufExplMapCTabSwitchBufs = 1
-"let g:miniBufExplModSelTarget = 1 
-
-" Run Make
-"map <F6> :make<CR>
-
-" Show error window
-"map <F6> :cwindow<CR>
-
-
-" Helper for errormarker
-"let &errorformat="%f:%l:%c: %t%*[^:]:%m,%f:%l: %t%*[^:]:%m," . &errorformat 
-
-" go
-"au BufRead,BufNewFile *.go setfiletype go
-" scala
-"au BufRead,BufNewFile *.scala setfiletype scala
 
 " recognize filetypes and set indent and 
 " load plugins accordingly
 filetype plugin on
 filetype indent on
-
-" this actually does something somewhat useful
-" it toggles comments, but not in a very clever fashion
-"au FileType python,perl,sh,bash,mutt vmap <F7> :call PyTestCommentRegion("## ")<CR>
-"au FileType c,d,cpp,css,php vmap <F7> :call PyTestCommentRegion("/** ", " **/")<CR>
-"au FileType html vmap <F7> :call PyTestCommentRegion("<!---  ", " -->")<CR>
-"au FileType xml vmap <F7> :call PyTestCommentRegion("<!---  ", " -->")<CR>
-"au FileType ant vmap <F7> :call PyTestCommentRegion("<!---  ", " -->")<CR>
-"au FileType java,scala vmap <F7> :call PyTestCommentRegion("/// ")<CR>
-"au FileType tex  vmap <F7> :call PyTestCommentRegion("%% ")<CR>
-"au FileType maude vmap <F7> :call PyTestCommentRegion("---- ")<CR>
-"au Filetype vim vmap <f7> :call pytestcommentRegion('" ')<CR>
-"au Filetype go vmap <f7> :call pytestcommentRegion("/// ")<CR>
-
-" Supertab, set omnicomplete as default
-"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-"autocmd FileType c set omnifunc=ccomplete#Complete
-"set omnifunc=syntaxcomplete#Complete
-
-" Enable Tagbar support for Scala
-"filetype plugin indent on "detects filetypes, plugins and indentexpr
-"let g:tagbar_type_scala = {
-"    \ 'ctagstype' : 'Scala',
-"    \ 'kinds'     : [
-"        \ 'p:packages:1',
-"        \ 'V:values',
-"        \ 'v:variables',
-"        \ 'T:types',
-"        \ 't:traits',
-"        \ 'o:objects',
-"        \ 'a:aclasses',
-"        \ 'c:classes',
-"        \ 'r:cclasses',
-"        \ 'm:methods'
-"    \ ]
-"\ }
-
-"Pathogen
-"execute pathogen#infect()
-
-"Ctrl-P
-"set runtimepath^=~/.vim/bundle/ctrlp.vim
-":let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py|\.class'
-
-
 
