@@ -12,7 +12,8 @@ call dein#add('ervandew/supertab')
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('jlanzarotta/bufexplorer')
-"call dein#add('vim-scripts/buftabs')
+call dein#add('godlygeek/tabular') " needed by vim-markdown
+call dein#add('plasticboy/vim-markdown') 
 call dein#add('ap/vim-buftabline')
 call dein#end()
 
@@ -29,6 +30,9 @@ colorscheme predawn
 " BufTabs
 noremap <C-h> :bprev<CR>
 noremap <C-l> :bnext<CR>
+
+" Vim markdown
+let g:vim_markdown_folding_disabled = 1
 
 " Line numbers
 set number
